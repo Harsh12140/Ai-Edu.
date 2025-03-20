@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Edu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: lightblue;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .header h1 {
+            margin-bottom: 10px;
+        }
+
+        .header hr {
+            width: 100%;
+            border-top: 1px solid black;
+            margin: 0;
+        }
+
+        .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content h2 {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            position: relative;
+            top: -2cm;
+        }
+
+        .options-container {
+            position: relative;
+            top: -2cm;
+            display: flex;
+            gap: 20px;
+        }
+
+        .option {
+            padding: 15px;
+            background-color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .option:hover {
+            background-color: lightgray;
+        }
+
+        .option i {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+            border-radius: 50%; /* Make icons circular */
+            padding: 10px; /* Add padding inside the circle */
+            background-color: black; /* Background color for the circle */
+            color: white; /* Icon color */
+        }
+
+        .option span {
+            white-space: nowrap;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>AI-Edu</h1>
+        <hr>
+    </div>
+
+    <div class="content">
+        <h2>Choose Your Mode</h2>
+        <div class="options-container">
+            <button class="option" onclick="window.location.href='image_and_text_page.html'">
+                <i class="fas fa-sticky-note"></i>
+                <span>Notes and Image</span>
+            </button>
+            <button class="option" onclick="window.location.href='video-player.html'">
+                <i class="fas fa-video"></i>
+                <span>Video</span>
+            </button>
+            <div id="output"></div>
+        </div>
+    </div>
+    <script>
+
+        function image_and_text_page() {
+
+            fetch('image_and_text_page', { method: 'POST' })
+
+                .then(response => response.json())
+
+                .then(data => {
+
+                    document.getElementById('output').innerText = data.message || data.error;
+
+                });
+
+        }
+
+
+        function Video_player() {
+
+            fetch('video_player', { method: 'POST' })
+
+                .then(response => response.json())
+
+                .then(data => {
+
+                    document.getElementById('output').innerText = data.message || data.error;
+
+                });
+
+        }
+
+    </script>
+
+</body>
+</html>

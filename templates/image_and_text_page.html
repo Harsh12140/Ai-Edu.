@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Edu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #add8e6; /* Light blue color */
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        hr {
+            margin: 20px 0;
+            border: 1px solid #000; /* Changed to black color */
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px; /* Keep this as is for top margin */
+            gap: 5cm; /* Set distance between images to 5cm */
+            margin-bottom: 5cm; /* Set vertical distance to 5cm */
+        }
+        .image-container img {
+            max-width: 48%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>AI-Edu</h1>
+    <hr>
+
+    <div class="content">
+        <h2>Generated Text:</h2>
+        <p id="generated-text">This is where the generated text will appear.</p>
+
+        <div class="image-container">
+            <div>
+                <h2>Generated Image:</h2>
+                <img id="generated-image" src="" alt="Generated Image">
+            </div>
+        </div>
+    </div>
+
+    <input type="text" id="user-prompt" placeholder="Enter your prompt here">
+    <button id="generate-button">Generate</button>
+
+    <script>
+        document.getElementById('generate-button').addEventListener('click', function() {
+            const prompt = document.getElementById('user-p

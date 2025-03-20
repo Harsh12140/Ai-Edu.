@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Edu Video Output</title>
+    <style>
+        body {
+            background-color: lightblue; /* Light blue background */
+            font-family: Arial, sans-serif; /* Font style */
+            margin: 0; /* Remove default margin */
+            padding: 20px; /* Add padding */
+        }
+        .header {
+            font-size: 24px; /* Header font size */
+            font-weight: bold; /* Bold header */
+            margin-bottom: 10px; /* Space below header */
+        }
+        .horizontal-line {
+            border-top: 2px solid black; /* Horizontal line style */
+            margin-bottom: 20px; /* Space below line */
+        }
+        .video-container {
+            display: flex; /* Use flexbox for alignment */
+            justify-content: center; /* Center align video */
+            align-items: center; /* Center align vertically */
+            padding: 20px; /* Padding around video */
+            border: 2px solid black; /* Border around video */
+            border-radius: 10px; /* Rounded corners */
+            background-color: white; /* White background for video area */
+            max-width: 800px; /* Max width for video container */
+            margin: auto; /* Center the container */
+        }
+        video {
+            width: 100%; /* Responsive video width */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">AI-Edu</div>
+    <div class="horizontal-line"></div>
+    
+    <div class="video-container">
+        <video controls>
+            <source src="animation.gif" type="video/gif"> <!-- Video source -->
+            Your browser does not support the video tag.
+        </video>
+    </div>
+	
+	<script>
+		function generateImage() {
+
+            fetch('/generate_image')
+
+                .then(response => {
+
+                    if (response.ok) {
+
+                        return response.blob();
+
+                    }
+
+                    throw new Error('Network response was not ok.');
+
+                })
+
+                .then(imageBlob => {
+
+                    const imageUrl = URL.createObjectURL(imageBlob);
+
+                    const imagePlayer = document.getElementById('imagePlayer');
+
+                    imagePlayer.src = imageUrl;
+
+                    document.getElementById('imageContainer').style.display = 'block';
+
+                })
+
+                .catch(error => console.error('There was a problem with the fetch operation:', error));
+
+        }
+
+    </script>
+</body>
+</html>
